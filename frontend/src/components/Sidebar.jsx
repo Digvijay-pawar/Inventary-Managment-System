@@ -6,19 +6,19 @@ import {
     FaTruck,
     FaBox,
     FaRegThumbsUp,
+    FaHistory,
 } from 'react-icons/fa';
 import { MdOutlineProductionQuantityLimits } from "react-icons/md";
 
 
-const Sidebar = ({ setActiveTab }:any) => {
+const Sidebar = ({ setActiveTab }) => {
     const location = useLocation();
     const links = [
         { to: '/', icon: <FaHome />, label: 'Home' },
-        { to: '/orders', icon: <FaShoppingCart />, label: 'Orders' },
         { to: '/create-bill', icon: <FaFileInvoice />, label: 'Bill' },
+        { to: '/history', icon: <FaHistory />, label: 'History' },
         { to: '/suppliers', icon: <FaTruck />, label: 'Suppliers' },
         { to: '/products', icon: <MdOutlineProductionQuantityLimits />, label: "Products" },
-        { to: '/add-stock', icon: <FaBox />, label: 'Add Stock' },
         { to: '/feedback', icon: <FaRegThumbsUp />, label: 'Feedback' },
     ];
     return (

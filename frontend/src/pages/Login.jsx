@@ -1,45 +1,22 @@
-import { useForm } from 'react-hook-form';
-import useRegister from '../hooks/useRegister';
+import { useForm } from "react-hook-form";
+import useLogin from "../hooks/useLogin";
 
-type RegisterForm = {
-    name: string,
-    email: string,
-    password: string
-}
-
-const Register = () => {
-    const { register, handleSubmit, formState: { errors } } = useForm<RegisterForm>();
-
-    const { mutate, isSuccess, isError, error, status } = useRegister();
+const Login = () => {
+    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { mutate, status } = useLogin();
 
     const isLoading = status === 'pending';
 
-    const onSubmit = (data: RegisterForm) => {
+    const onSubmit = async (data) => {
         mutate(data);
-    }
+    };
 
     return (
         <div className="min-h-screen bg-gray-100 flex items-center justify-center">
             <div className="w-full max-w-sm bg-white p-8 rounded-lg shadow-lg">
-                <h2 className="text-2xl font-semibold text-center mb-6">Register</h2>
-                <form onSubmit={handleSubmit(onSubmit)}>
-                    <div className="form-control mb-4">
-                        <label htmlFor="name" className="label">
-                            <span className="label-text">Name</span>
-                        </label>
-                        <input
-                            type="text"
-                            id="name"
-                            className="input input-bordered w-full"
-                            {...register('name', {
-                                required: "Name is required"
-                            })}
-                        />
-                        {errors.name && (
-                            <p className="text-red-500 text-sm">{errors.name.message}</p>
-                        )}
-                    </div>
+                <h2 className="text-2xl font-semibold text-center mb-6">Login</h2>
 
+                <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="form-control mb-4">
                         <label htmlFor="email" className="label">
                             <span className="label-text">Email</span>
@@ -76,25 +53,18 @@ const Register = () => {
                         )}
                     </div>
 
-                    <button disabled={isLoading} type="submit" className="btn btn-primary w-full">{isLoading ? "Loading...": "Register"}</button>
-
-
-                    {isError && (
-                        <div className="mt-4 text-red-500">
-                            <p>{error?.message || "Registration failed, please try again."}</p>
-                        </div>
-                    )}
-
-                    {isSuccess && (
-                        <div className="mt-4 text-green-500">
-                            <p>Register successful! Redirecting...</p>
-                        </div>
-                    )}
+                    <button
+                        type="submit"
+                        className={`btn w-full ${isLoading ? 'btn-disabled' : 'btn-primary'}`}
+                        disabled={isLoading}
+                    >
+                        {isLoading ? 'Loading...' : 'Login'}
+                    </button>
 
                     <p className="text-center mt-4">
                         Don't have an account?{' '}
-                        <a href="/login" className="text-blue-500 hover:underline">
-                            Login
+                        <a href="/register" className="text-blue-500 hover:underline">
+                            Register
                         </a>
                     </p>
                 </form>
@@ -103,4 +73,4 @@ const Register = () => {
     );
 };
 
-export default Register;
+export default Login;

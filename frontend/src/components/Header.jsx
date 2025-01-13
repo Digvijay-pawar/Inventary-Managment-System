@@ -1,6 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom';
 
-const Header = ({ data, activeTab}: any) => {
+const Header = ({ data, activeTab}) => {
     const navigate = useNavigate();
 
     const logoutHandler = () => {
@@ -42,7 +42,7 @@ const Header = ({ data, activeTab}: any) => {
     );
 };
 
-const HeaderLayout = ({ children, activeTab }: any) => (
+const HeaderLayout = ({ children, activeTab }) => (
     <header className="bg-blue-500 text-white p-4">
         <nav className="flex justify-between items-center">
             <div>

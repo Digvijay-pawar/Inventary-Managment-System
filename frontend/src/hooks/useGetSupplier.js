@@ -1,30 +1,26 @@
 import { useQuery } from "@tanstack/react-query";
 import api from "./index";
 
-const getProfile = async () => {
+const getSupplier = async (supplierId) => {
     try {
-        const response = await api.get('/user/profile',{
-            headers: {
-                Authorization: `Bearer ${localStorage.getItem('token')}`
-            }
-        });
+        const response = await api.get(`/supplier/${supplierId}`);
         if (!response.data.status) {
             throw new Error(response.data.message);
         }
-        return response.data.data;
-    } catch (error: any) {
+        return response.data.supplier;
+    } catch (error) {
         if (error.response?.data?.message) {
             throw new Error(error.response.data.message);
         }
         throw new Error("Something went wrong, try again later.");
     }
-}
+};
 
-const useAuth = () => {
+const useGetSupplier = (supplierId) => {
     return useQuery({
-        queryKey: ['user'],
-        queryFn: getProfile
-    })
-}
+        queryKey: ["supplier", supplierId],
+        queryFn: () => getSupplier(supplierId),
+    });
+};
 
-export default useAuth;
+export default useGetSupplier;

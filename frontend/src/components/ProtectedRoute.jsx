@@ -3,11 +3,7 @@ import { Navigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import Loader from "./Loader";
 
-type ProtectedRouteProps = {
-  children: ReactNode;
-};
-
-const ProtectedRoute = ({ children }: ProtectedRouteProps) => {
+const ProtectedRoute = ({ children }) => {
   const { data, isLoading, isError } = useAuth();
 
   if (isLoading) return <Loader />;
