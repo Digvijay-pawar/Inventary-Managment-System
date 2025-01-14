@@ -27,15 +27,9 @@ exports.registerUser = async (req, res) => {
 
         return res.status(201).json({
             status: true,
-            message: "User created successfully",
-            data: {
-                user: {
-                    id: newUser._id,
-                    name: newUser.name,
-                    email: newUser.email,
-                },
-                token
-            }
+            message: "User created successfully!",
+            token
+
         });
     } catch (error) {
         return res.status(500).json({ status: false, message: error.message });
@@ -65,15 +59,9 @@ exports.loginUser = async (req, res) => {
 
         return res.status(200).json({
             status: true,
-            message: "User logged in successfully",
-            data: {
-                user: {
-                    id: user._id,
-                    name: user.name,
-                    email: user.email,
-                },
-                token
-            }
+            message: "User logged in successfully!",
+            token
+
         });
     } catch (error) {
         return res.status(500).json({ status: false, message: error.message });
@@ -96,7 +84,7 @@ exports.getProfile = async (req, res) => {
         return res.status(200).json({
             status: true,
             message: "User data fetched successfully",
-            data: {
+            user: {
                 id: user._id,
                 name: user.name,
                 email: user.email,
