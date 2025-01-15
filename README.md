@@ -1,12 +1,4 @@
 # Assignment – Rounding Adjustment
-
-## Title Page
-**Assignment Name:** Rounding Adjustment  
-**Student Name:** Digvijay Pawar  
-**Course:** B.Tech in Computer Engineering  
-**Institute:** R.C. Patel Institute of Technology, Shirpur  
-**Date of Submission:** January 15, 2025  
-
 ---
 
 ## Problem Statement
