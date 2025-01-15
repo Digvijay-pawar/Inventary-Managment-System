@@ -85,6 +85,53 @@ adjust_rounded_numbers()
 # Print the output
 print(json.dumps(output, indent=1))
 ```
+### Output:
+{
+ "original_numbers": [
+  123456.22,
+  6756.22,
+  7778899.98,
+  97876.45,
+  567.9,
+  9065337.78,
+  776767.87,
+  896433.23,
+  335345.87,
+  568899.45,
+  123343.47
+ ],
+ "rounded_numbers": [
+  1.23,
+  0.07,
+  77.79,
+  0.98,
+  0.01,
+  90.65,
+  7.77,
+  8.96,
+  3.35,
+  5.69,
+  1.23
+ ],
+ "adjusted_rounded_numbers": [
+  1.23,
+  0.07,
+  77.79,
+  0.98,
+  0.01,
+  90.66000000000001,
+  7.77,
+  8.96,
+  3.35,
+  5.69,
+  1.23
+ ],
+ "unrounded_numbers_total": 197.74,
+ "rounded_numbers_total": 197.73,
+ "difference": 0.01,
+ "adjusted_total": 197.74
+}
+
 
 ### Phase 2: Nested Array Adjustment
 This phase extends the logic to handle nested arrays.
@@ -182,7 +229,77 @@ output['adjusted_rounded_numbers_total'] = calculate_rounded_numbers_total(outpu
 # Print the output
 print(json.dumps(output, indent=2))
 ```
+### Output:
 
+{
+  "original_numbers": [
+    123456.22,
+    [
+      6756.22,
+      7778899.98,
+      [
+        97876.45,
+        567.9
+      ]
+    ],
+    9065337.78,
+    [
+      776767.87,
+      [
+        896433.23,
+        335345.87
+      ],
+      568899.45
+    ],
+    123343.47
+  ],
+  "rounded_numbers": [
+    1.23,
+    [
+      0.07,
+      77.79,
+      [
+        0.98,
+        0.01
+      ]
+    ],
+    90.65,
+    [
+      7.77,
+      [
+        8.96,
+        3.35
+      ],
+      5.69
+    ],
+    1.23
+  ],
+  "adjusted_rounded_numbers": [
+    1.23,
+    [
+      0.07,
+      77.79,
+      [
+        0.98,
+        0.01
+      ]
+    ],
+    90.66,
+    [
+      7.77,
+      [
+        8.96,
+        3.35
+      ],
+      5.69
+    ],
+    1.23
+  ],
+  "unrounded_numbers_total": 197.74,
+  "rounded_numbers_total": 197.73,
+  "difference": 0.01,
+  "adjusted_rounded_numbers_total": 197.74
+}
 ---
 
 ## Conclusion
